@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Product Details - TezBuy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TezBuy</a>
+
+            <!-- Burger Button -->
+            <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Desktop Links (hidden on mobile) -->
+            <div class="d-none d-lg-flex ms-auto">
+                <ul class="navbar-nav flex-row gap-3 align-items-center">
+                    <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Checkout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">
+                        🛒 (<span class="cart-count">0</span>)
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="darkModeToggle btn btn-sm btn-outline-light ms-2">🌙</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar for Mobile -->
+    <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="mobileMenu"
+        style="background: linear-gradient(135deg, #000 60%, #00ff80);">
+        <div class="offcanvas-header border-bottom border-light">
+            <h5 class="offcanvas-title fw-bold">✨ TezBuy Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body px-4">
+            <ul class="nav flex-column gap-3">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-house-door-fill"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-box-seam"></i> Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-truck"></i> Checkout
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-cart4"></i> Cart (<span class="cart-count">0</span>)
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <button
+                        class=" darkModeToggle btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-moon-stars"></i> Toggle Dark Mode
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="container my-5" id="product-detail"></div>
+
+    <!-- Suggested Products -->
+    <div class="container mt-5" id="suggested-products">
+        <h4>You Might Also Like</h4>
+        <div class="row" id="suggested-list"></div>
+    </div>
+
+     <!-- Footer -->
+     <footer class="main-footer mt-5 text-white pt-5 pb-3 dark-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-logo">TezBuy</h5>
+                    <p>Your one-stop online store for everything you love. From gadgets to fashion — delivered to your
+                        door.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Checkout</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6>Customer Care</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6>Follow Us</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3 border-light" />
+            <div class="text-center small">
+                &copy; 2025 TezBuy. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const categoryDescriptions = {
+            electronics: "Top-tier tech crafted for performance, style, and daily reliability.",
+            clothing: "Upgrade your look with comfortable and trendy fashion essentials.",
+            toys: "Creative and fun toys that spark imagination for kids of all ages.",
+            gaming: "Pro-level gaming gear designed for speed, precision, and comfort.",
+            default: "Premium product trusted by thousands across Pakistan."
+        };
+
+        const sizes = ["S", "M", "L", "XL"];
+        const colors = ["Red", "Black", "Blue", "White"];
+
+
+
+        function renderSizes(category) {
+            if (category !== "clothing") return "";
+            return `
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Select Size:</label><br/>
+          ${sizes.map(size => `
+            <button class="btn btn-outline-dark btn-sm me-2 size-option" data-size="${size}">${size}</button>
+          `).join("")}
+        </div>
+      `;
+        }
+
+        function renderColors(category) {
+            if (category === "clothing") return "";
+            return `
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Choose Color:</label><br/>
+          ${colors.map(color => `
+            <span class="badge rounded-pill bg-light text-dark border border-dark me-2 px-3 py-2 color-option"
+              data-color="${color}" style="cursor: pointer;">${color}</span>
+          `).join("")}
+        </div>
+      `;
+        }
+
+        function getDiscount(price) {
+            const discount = Math.floor(Math.random() * 20) + 10;
+            const discounted = Math.floor(price - (price * discount / 100));
+            return { original: price, discount, discounted };
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCartCount();
+
+            const id = localStorage.getItem("selectedProductId");
+            const product = products.find(p => p.id == id);
+            const container = document.getElementById("product-detail");
+
+            if (!product) {
+                container.innerHTML = "<p>Product not found.</p>";
+                return;
+            }
+
+            const { original, discount, discounted } = getDiscount(product.price);
+
+            container.innerHTML = `
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img src="${product.img}" id="product-img" class="img-fluid rounded" alt="${product.name}">
+          </div>
+          <div class="col-md-6">
+            <h2>${product.name}</h2>
+            <p class="text-muted mb-0">Category: ${product.category}</p>
+            <div class="text-danger fw-bold">Save ${discount}%</div>
+            <h4 class="text-success mt-2">Rs. ${discounted.toLocaleString()}
+              <span class="text-muted text-decoration-line-through fs-6 ms-2">Rs. ${original.toLocaleString()}</span>
+            </h4>
+
+            <div class="mb-3 text-warning">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <small class="ms-2">(4.5/5 - 125 ratings)</small>
+            </div>
+
+            <p class="mb-3">${categoryDescriptions[product.category] || categoryDescriptions.default}</p>
+            ${renderSizes(product.category)}
+            ${renderColors(product.category)}
+
+            <div class="d-flex align-items-center mb-3">
+              <label for="qty" class="me-2 fw-semibold">Qty:</label>
+              <input type="number" id="qty" class="form-control w-auto" value="1" min="1" />
+            </div>
+            <button class="btn btn-custom btn-sm px-4 mb-2" onclick="addToCartWithQty(${product.id})">Add to Cart</button>
+            <a href="products.html" class="btn btn-outline-secondary btn-sm ms-2">Back</a>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <h4>Customer Reviews</h4>
+          <div class="border rounded p-3 mb-3">
+            <strong>Ali Raza</strong> <span class="text-warning">★★★★☆</span>
+            <p>Product quality is superb, and shipping was fast!</p>
+          </div>
+          <div class="border rounded p-3 mb-3">
+            <strong>Sana Ahmed</strong> <span class="text-warning">★★★★★</span>
+            <p>Best purchase of the month. Loved it!</p>
+          </div>
+        </div>
+      `;
+
+            // Suggested products
+            const suggestions = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+            const suggestedList = document.getElementById("suggested-list");
+            suggestions.forEach(p => {
+                suggestedList.innerHTML += `
+          <div class="col-6 col-md-3 mb-4">
+            <div class="card h-100 product-card" onclick="viewDetails(${p.id})" style="cursor:pointer">
+              <img src="${p.img}" class="card-img-top" alt="${p.name}">
+              <div class="card-body text-center">
+                <h6 class="card-title mb-2">${p.name}</h6>
+                <p class="card-text text-success fw-semibold">Rs. ${p.price.toLocaleString()}</p>
+              </div>
+            </div>
+          </div>
+        `;
+            });
+
+            // === Size Switching Logic ===
+            document.querySelectorAll(".size-option").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".size-option").forEach(b => b.classList.remove("btn-dark"));
+                    btn.classList.add("btn-dark");
+                    const size = btn.getAttribute("data-size");
+                    if (sizeImages[size]) {
+                        document.getElementById("product-img").src = sizeImages[size];
+                    }
+                });
+            });
+
+            // === Color Switching Logic ===
+            document.querySelectorAll(".color-option").forEach(badge => {
+                badge.addEventListener("click", () => {
+                    document.querySelectorAll(".color-option").forEach(b => b.classList.remove("bg-success", "text-white"));
+                    badge.classList.add("bg-success", "text-white");
+                    const color = badge.getAttribute("data-color");
+                    if (colorImages[color]) {
+                        document.getElementById("product-img").src = colorImages[color];
+                    }
+                });
+            });
+        });
+
+
+        function addToCartWithQty(id) {
+            const qty = parseInt(document.getElementById("qty").value) || 1;
+            const product = products.find(p => p.id == id);
+            const existing = cart.find(item => item.id === id);
+
+            // Detect selected color/size (if any)
+            const selectedColor = document.querySelector(".color-option.bg-success")?.getAttribute("data-color");
+            const selectedSize = document.querySelector(".size-option.btn-dark")?.getAttribute("data-size");
+
+            if (existing) {
+                existing.quantity += qty;
+            } else {
+                cart.push({ ...product, quantity: qty });
+            }
+
+            saveCart();
+            updateCartCount();
+
+            // Toast message logic
+            let message = `✅ ${product.name} x${qty} added to cart`;
+
+            if (selectedColor) {
+                message = `✅ ${selectedColor} color ${product.name} added to cart`;
+            }
+            if (selectedSize) {
+                message = `✅ Size ${selectedSize} ${product.name} added to cart`;
+            }
+
+            const toast = document.getElementById("addCartToast");
+            toast.textContent = message;
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div id="addCartToast">✅ Product added to cart!</div>
+</body>
+
+</html>

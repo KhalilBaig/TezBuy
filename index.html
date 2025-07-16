@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TezBuy - Home</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .typing-title {
+            display: inline-block;
+            position: relative;
+            font-weight: 600;
+            background: linear-gradient(to right, #00ff80, #00cc66);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: typingCenter 4s steps(20, end) infinite;
+        }
+
+        @keyframes typingCenter {
+            0% {
+                clip-path: inset(0 100% 0 0);
+            }
+
+            50% {
+                clip-path: inset(0 0 0 0);
+            }
+
+            100% {
+                clip-path: inset(0 0 0 100%);
+            }
+        }
+
+        .toast-container {
+            z-index: 2000;
+        }
+
+        #logoutToast {
+            min-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ff80;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TezBuy</a>
+
+            <!-- Burger Button -->
+            <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Desktop Links (hidden on mobile) -->
+            <div class="d-none d-lg-flex ms-auto">
+                <ul class="navbar-nav flex-row gap-3 align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Checkout</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            🛒 (<span class="cart-count">0</span>)
+                        </a>
+                    </li>
+                    <li class="nav-item" id="authLink">
+                        <a class="nav-link" href="login.html">Login / Signup</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <button class="darkModeToggle btn btn-sm btn-outline-light ms-2">🌙</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar for Mobile -->
+    <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="mobileMenu"
+        style="background: linear-gradient(135deg, #000 60%, #00ff80);">
+        <div class="offcanvas-header border-bottom border-light">
+            <h5 class="offcanvas-title fw-bold">✨ TezBuy Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body px-4">
+            <ul class="nav flex-column gap-3">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-house-door-fill"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-box-seam"></i> Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-truck"></i> Checkout
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html" class="nav-link text-white d-flex align-items-center gap-2">
+                        <i class="bi bi-cart4"></i> Cart (<span class="cart-count">0</span>)
+                    </a>
+                </li>
+                <li class="nav-item mt-3" id="authLinkMobile">
+                    <a href="login.html"
+                        class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-person"></i> Login
+                    </a>
+                </li>
+
+
+                <li class="nav-item mt-3">
+                    <button
+                        class=" darkModeToggle btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-moon-stars"></i> Toggle Dark Mode
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Carousel -->
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1500">
+        <div class="carousel-inner">
+
+            <div class="carousel-item" style="background: url('images/Toyzz landing.jpg') center/cover; height: 80vh;">
+                <div
+                    class="d-flex h-100 align-items-center justify-content-center text-center text-white bg-dark bg-opacity-50">
+                    <div>
+                        <h1 class="display-4 fw-bold">Gaming Essentials</h1>
+                        <p class="lead">Trendy looks. Incredible prices.</p>
+                        <a href="products.html" class="btn btn-light btn-lg mt-3 text-dark">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item"
+                style="background: url('images/pngtree-fashion-boutique-featuring-clothing-shoes-and-personal-accessories-with-vibrant-neon-image_3853737.jpg') center/cover; height: 80vh;">
+                <div
+                    class="d-flex h-100 align-items-center justify-content-center text-center text-white bg-dark bg-opacity-50">
+                    <div>
+                        <h1 class="display-4 fw-bold">Fashion Fiesta</h1>
+                        <p class="lead">Delivered fast. Priced right.</p>
+                        <a href="products.html" class="btn btn-warning btn-lg mt-3">Shop Deals</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active"
+                style="background: url('images/Sasti-Mobile-Accessories.png') center/cover; height: 80vh;">
+                <div
+                    class="d-flex h-100 align-items-center justify-content-center text-center text-white bg-dark bg-opacity-50">
+                    <div>
+                        <h1 class="display-4 fw-bold">Big Sale on Electronics</h1>
+                        <p class="lead fw-bold">Save up to 50% on top tech</p>
+                        <a href="products.html" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- 🔥 Premium Offer Banner -->
+    <section class="offer-glow-bar text-center text-white py-5">
+        <div class="offer-heading-wrapper">
+            <h4 class="typing-offer fw-bold mb-1 text-6">🔥 Flat 30% OFF on Electronics!</h4>
+        </div>
+        <a href="products.html" class="btn shop-btn fw-bold">Shop Now</a>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-5 bg-light dark-mode-bg">
+        <div class="container text-center">
+            <h2 class="mb-4 dark-mode Explore-cat">Explore Categories</h2>
+
+            <!-- Carousel Scroll Container -->
+            <div class="d-flex overflow-auto flex-nowrap gap-3 px-2 pb-2">
+
+                <!-- Mobiles -->
+                <div class="col-6 col-md-3 flex-shrink-0" style="min-width: 160px;">
+                    <a href="products.html?category=electronics" class="text-decoration-none">
+                        <div class="card p-3 shadow-sm text-center h-100 featured-category-card">
+                            <i class="bi bi-phone display-5 text-primary"></i>
+                            <h6 class="mt-3">Mobiles</h6>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Electronics -->
+                <div class="col-6 col-md-3 flex-shrink-0" style="min-width: 160px;">
+                    <a href="products.html?category=electronics" class="text-decoration-none">
+                        <div class="card p-3 shadow-sm text-center h-100 featured-category-card">
+                            <i class="bi bi-laptop display-5 text-danger"></i>
+                            <h6 class="mt-3">Electronics</h6>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Clothing -->
+                <div class="col-6 col-md-3 flex-shrink-0" style="min-width: 160px;">
+                    <a href="products.html?category=clothing" class="text-decoration-none">
+                        <div class="card p-3 shadow-sm text-center h-100 featured-category-card">
+                            <i class="bi bi-person-lines-fill display-5 text-success"></i>
+                            <h6 class="mt-3">Clothing</h6>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Toys -->
+                <div class="col-6 col-md-3 flex-shrink-0" style="min-width: 160px;">
+                    <a href="products.html?category=toys" class="text-decoration-none">
+                        <div class="card p-3 shadow-sm text-center h-100 featured-category-card">
+                            <i class="bi bi-joystick display-5 text-warning"></i>
+                            <h6 class="mt-3">Toys</h6>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Gaming -->
+                <div class="col-6 col-md-3 flex-shrink-0" style="min-width: 160px;">
+                    <a href="products.html?category=gaming" class="text-decoration-none">
+                        <div class="card p-3 shadow-sm text-center h-100 featured-category-card">
+                            <i class="bi bi-controller display-5 text-info"></i>
+                            <h6 class="mt-3">Gaming</h6>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Best Sellers -->
+    <section class="py-5 dark-mode-bg">
+        <div class="container text-center">
+            <h2 class="mb-4 best-seller-heading">Best Sellers</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-evenly">
+
+                <!-- Product 1 -->
+                <div class="col">
+                    <div class="card product-card text-white h-100 position-relative">
+                        <span class="badge bg-danger badge-hot position-absolute top-0 start-0 m-2">Hot</span>
+                        <img src="images/samsung.jpg" class="card-img-top" alt="Samsung S20 Ultra">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title typing-title">Samsung S20 Ultra</h6>
+                            <div class="mb-2 text-warning">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                            </div>
+                            <p class="text-muted text-decoration-line-through mb-1 best-seller-heading">Rs. 119,999</p>
+                            <p class="text-success fw-bold">Rs. 90,999</p>
+                            <!-- Inside your product card -->
+                            <button class="btn btn-custom btn-sm mt-auto" onclick="checkLogin(101)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col">
+                    <div class="card product-card text-white h-100 position-relative">
+                        <span class="badge bg-danger badge-hot position-absolute top-0 start-0 m-2">Hot</span>
+                        <img src="images/mens-kurta.jpg" class="card-img-top" alt="Men's Kurta">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title typing-title">Men's Kurta</h6>
+                            <div class="mb-2 text-warning">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted text-decoration-line-through mb-1 best-seller-heading">Rs. 5,500</p>
+                            <p class="text-success fw-bold">Rs. 3,999</p>
+                            <button class="btn btn-custom btn-sm mt-auto" onclick="checkLogin(102)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col">
+                    <div class="card product-card text-white h-100 position-relative">
+                        <span class="badge bg-danger badge-hot position-absolute top-0 start-0 m-2">Hot</span>
+                        <img src="images/gaming-mouse-rgb.png" class="card-img-top" alt="Gaming Mouse">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title typing-title">Gaming Mouse RGB</h6>
+                            <div class="mb-2 text-warning">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                            </div>
+                            <p class="text-muted text-decoration-line-through mb-1 best-seller-heading">Rs. 2,999</p>
+                            <p class="text-success fw-bold">Rs. 2,199</p>
+                            <button class="btn btn-custom btn-sm mt-auto" onclick="checkLogin(103)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Why Shop With Us -->
+    <section class="py-5 bg-light dark-mode-bg">
+        <div class="container text-center">
+            <h2 class="mb-4 why-shop">Why Shop With Us</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <i class="bi bi-truck display-5 text-success"></i>
+                    <h6 class="mt-3 why-shop">Free Shipping</h6>
+                    <p>On orders above Rs. 2,000</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-shield-lock display-5 text-primary"></i>
+                    <h6 class="mt-3 why-shop">Secure Payments</h6>
+                    <p>100% secure transactions</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-clock-history display-5 text-danger"></i>
+                    <h6 class="mt-3 why-shop">Fast Delivery</h6>
+                    <p>3-5 business days across Pakistan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">What Our Customers Say</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card p-3 shadow-sm">
+                        <p>"Excellent service and fast delivery. Highly recommended!"</p>
+                        <h6 class="mb-0">– Ahmed R.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3 shadow-sm">
+                        <p>"Best online store experience I've had in Pakistan."</p>
+                        <h6 class="mb-0">– Ayesha K.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3 shadow-sm">
+                        <p>"Affordable prices and great customer support."</p>
+                        <h6 class="mb-0">– Usman S.</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section py-5">
+        <div class="container text-center">
+            <h4 class="mb-3">Subscribe to Our Newsletter</h4>
+            <form class="d-flex justify-content-center flex-wrap gap-2">
+                <input type="email" class="form-control w-50" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer mt-5 text-white pt-5 pb-3 dark-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-logo">TezBuy</h5>
+                    <p>Your one-stop online store for everything you love. From gadgets to fashion — delivered to your
+                        door.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Checkout</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6>Customer Care</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6>Follow Us</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3 border-light" />
+            <div class="text-center small">
+                &copy; 2025 TezBuy. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function checkLogin(productId) {
+            const user = localStorage.getItem("tezbuy_user");
+            if (!user) {
+                // If not logged in, redirect to login
+                localStorage.setItem("redirect_after_login", "home.html"); // ya "products.html" depending on context
+                window.location.href = "login.html";
+            } else {
+                addToCart(productId); // If logged in, proceed to add to cart
+            }
+        }
+
+    </script>
+
+    <div id="addCartToast">✅ Product added to cart!</div>
+    <!-- Logout Confirmation Toast -->
+    <div class="toast-container position-fixed top-50 start-50 translate-middle z-800">
+        <div id="logoutToast" class="toast align-items-center text-bg-dark border-0 show" role="alert"
+            aria-live="assertive" aria-atomic="true" style="display: none;">
+            <div class="d-flex flex-column p-3">
+                <div class="mb-2">Are you sure you want to logout?</div>
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-sm btn-danger" id="confirmLogoutBtn">Yes, Logout</button>
+                    <button type="button" class="btn btn-sm btn-secondary" id="cancelLogoutBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

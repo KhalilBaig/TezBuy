@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Signup - TezBuy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background: #000;
+            color: white;
+        }
+
+        .box {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff80;
+        }
+
+        .btn-custom {
+            background: #00ff80;
+            color: #000;
+            font-weight: bold;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3 class="text-center mb-4">Create Account</h3>
+        <form id="signupForm">
+            <input type="text" class="form-control mb-3" id="name" placeholder="Name" required />
+            <input type="email" class="form-control mb-3" id="email" placeholder="Email" required />
+            <input type="password" class="form-control mb-3" id="password" placeholder="Password" required />
+            <button class="btn btn-custom w-100" type="submit">Sign Up</button>
+            <div class="text-center mt-3">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Get existing users array or empty array
+            const users = JSON.parse(localStorage.getItem("tezbuy_users")) || [];
+
+            // Check if user already exists
+            const existing = users.find(u => u.email === email);
+            if (existing) {
+                alert("❌ Email already exists. Please login.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Add new user
+            users.push({ name, email, password });
+            localStorage.setItem("tezbuy_users", JSON.stringify(users));
+
+            alert("✅ Signup successful! Please login.");
+            window.location.href = "login.html";
+        });
+    </script>
+
+</body>
+
+</html>
